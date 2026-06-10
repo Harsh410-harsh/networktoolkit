@@ -1,103 +1,94 @@
-<<<<<<< HEAD
-# NetToolkit — CCNA Network Tools
+# NetToolkit — Network Tools for CCNA Students
+A simple Python project that helps you learn and practice networking concepts used in CCNA.
+No complicated setup — just run and use!
 
-A Python-based networking toolkit covering core CCNA concepts:
-- Subnet calculation (CIDR, masks, host ranges)
-- VLSM (Variable Length Subnet Masking)
-- IP membership checking
-- Ping sweep (host discovery)
-- TCP port scanning with service identification
+# What Does This Project Do?
+This tool helps you:
 
----
+Calculate subnet details (mask, hosts, broadcast address)
+Split one network into smaller subnets (VLSM)
+Check if an IP address belongs to a subnet
+Find all active devices on your network (Ping Sweep)
+Check which ports are open on a device (Port Scanner)
 
-## Skills Practiced
 
-| CCNA Topic | Tool |
-|---|---|
-| IP Addressing & Subnetting | Subnet Calculator |
-| VLSM | VLSM Allocator |
-| Network classes, private ranges | Subnet Calculator |
-| Host discovery (ICMP) | Ping Sweep |
-| TCP/UDP ports, well-known services | Port Scanner |
-| DNS resolution | Scanner (hostname lookup) |
+#  Requirements
 
----
+Python 3.8 or higher
+Flask (only for the web dashboard)
 
-## Quick Start
-
-### Install dependencies
-```bash
+Install Flask:
 pip install flask
-```
 
-### CLI mode
-```bash
-# Subnet info
+#  How to Run
+
+# Option 1 — Command Line (Terminal)
+  Open terminal in the project folder and run:
+  python main.py subnet 192.168.1.0/24
+  
+# Option 2 — Web Dashboard (Browser)
+    python app.py
+   Then open your browser and go to: http://127.0.0.1:5000
+
+# Commands — Simple Examples
+
+# 1. Subnet Calculator
+Find all details about a network.
 python main.py subnet 192.168.1.0/24
+What you get: Network address, broadcast address, subnet mask, how many hosts, first and last IP, etc.
 
-# VLSM allocation
+# 2. VLSM — Split a Network
+Divide one big network into smaller pieces based on how many devices you need.
 python main.py vlsm 192.168.1.0/24 50 25 10 5
+This splits 192.168.1.0/24 into 4 subnets:
 
-# Check if IP is in subnet
-python main.py check 192.168.1.45 192.168.1.0/26
+First subnet for 50 devices
+Second subnet for 25 devices
+Third subnet for 10 devices
+Fourth subnet for 5 devices
 
-# Ping sweep a network
+
+# 3. IP Check
+Check if an IP address is inside a subnet or not.
+python main.py check 192.168.1.100 192.168.1.0/26
+Output: ✓ (inside) or ✗ (outside)
+
+# 4. Ping Sweep
+Find all active/online devices in your network.
 python main.py scan 192.168.1.0/24
+Shows a list of all devices that responded to ping.
 
-# Port scan a host (common ports)
+# 5. Port Scanner
+Check which ports are open on a device.
 python main.py ports 192.168.1.1
+Scans common ports like 22 (SSH), 80 (HTTP), 443 (HTTPS), etc.
 
-# Port scan specific ports
-python main.py ports 192.168.1.1 22 80 443 8080
-```
-
-### Web Dashboard
-```bash
-python app.py
-# Open http://localhost:5000
-```
-
----
-
-## File Structure
-
-```
-network_toolkit/
-├── main.py              # CLI entry point
-├── app.py               # Web dashboard (Flask)
+# Project Structure
+networktoolkit/
+│
+├── main.py            → Run commands from terminal
+├── app.py             → Web dashboard
+│
 ├── src/
-│   ├── subnet_calc.py   # Subnet, VLSM, IP check logic
-│   └── scanner.py       # Ping sweep + port scanner
-└── README.md
-```
+│   ├── subnet_calc.py → Subnet, VLSM, IP check logic
+│   └── scanner.py     → Ping sweep and port scanner
+│
+└── README.md          → This file
 
----
+# CCNA Topics Covered
+This ToolCCNA TopicSubnet CalculatorIP Addressing, SubnettingVLSM (Variable Length Subnet) MaskingIP CheckSubnetting MathPing SweepICMP, Host DiscoveryPort ScannerTCP Ports, Well-Known Services
 
-## How to Make It Your Own
+#  Built With
 
-1. Add more port→service mappings in `scanner.py → COMMON_PORTS`
-2. Add UDP scanning support (for DNS/DHCP/SNMP)
-3. Add OSPF/EIGRP subnet summarization calculator
-4. Add traceroute visualization
-5. Export results to PDF/CSV report
+Python 3 — Main programming language
+Flask — For the web dashboard
+ipaddress — Python built-in library for networking
+socket — Python built-in library for port scanning
 
----
 
-## Requirements
+# Author
+Harsh — github.com/Harsh410-harsh
+Made as a learning project while studying CCNA networking concepts.
 
-- Python 3.8+
-- Flask (only for web dashboard)
-- Works on Windows, macOS, Linux
-- No root/admin needed for port scanning (TCP connect scan)
-- Ping sweep may need admin on some systems
-
----
-
-## Notes
-
-- Port scanner uses TCP connect scan — no root needed
-- Ping sweep uses system `ping` command
-- For real networks, replace ping with `scapy` ARP for more reliable LAN discovery
-=======
-# networktoolkit
->>>>>>> 9ad75d37764273d3d82b53e46f48b41561e0fb7b
+# License
+Free to use for learning and practice.
