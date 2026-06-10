@@ -2,7 +2,7 @@
 A simple Python project that helps you learn and practice networking concepts used in CCNA.
 No complicated setup — just run and use!
 
-# What Does This Project Do?
+## What Does This Project Do?
 This tool helps you:
 
 Calculate subnet details (mask, hosts, broadcast address)
